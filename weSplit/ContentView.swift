@@ -12,7 +12,7 @@ struct ContentView: View {
     @State private var checkAmount = ""
     @State private var numberOfPeople = 0
     @State private var tipPercetage = 2
-    @State private var joe = true
+    @State private var joe = false
     
     
     let tipPercentages = [0, 5, 10, 15, 20, 25]
