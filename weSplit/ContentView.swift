@@ -12,12 +12,20 @@ struct ContentView: View {
     @State private var checkAmount = ""
     @State private var numberOfPeople = 0
     @State private var tipPercetage = 2
+    @State private var joe = true
     
     
     let tipPercentages = [0, 5, 10, 15, 20, 25]
     var totalPerPerson: Double {
         //calulates the totals per person
-        let peopleCount = Double(numberOfPeople + 1)
+       var peopleCount = Double(1)
+        if joe {
+           peopleCount = Double(1)
+        }
+        else{
+            peopleCount = Double(numberOfPeople + 1)
+        }
+        
         let tipSelection = Double(tipPercentages[tipPercetage])
         let orderAmount = Double(checkAmount) ?? 0
         
@@ -38,6 +46,9 @@ struct ContentView: View {
                             Text("\($0) people")
                         }
                     }
+                    Toggle(isOn: $joe) {
+                        Text("Are you Joe")
+                    }.padding()
                 }
                 Section(header: Text("Tip amount")){
                     Picker("Tip Percentage", selection: $tipPercetage){
